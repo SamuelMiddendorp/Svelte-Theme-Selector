@@ -1,1 +1,1 @@
-# Svelte-Theme-Selector
+# Svelte Theme Selector
