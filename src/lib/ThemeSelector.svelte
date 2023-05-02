@@ -32,16 +32,25 @@
         });
     };
     const applyNextTheme = () => {
-
+        let maxIndex = themes.length - 1;
+        console.log(currentThemeIndex);
+        if(currentThemeIndex < maxIndex){
+            currentThemeIndex = currentThemeIndex + 1;
+            applyTheme(themes[currentThemeIndex]);
+        }
+        else{
+            currentThemeIndex = 0;
+            applyTheme(themes[currentThemeIndex]);
+        }
     }
 
     onMount(() => {
-        applyTheme(lightTheme);
+        applyTheme(themes[currentThemeIndex]);
     });
 </script>
 
 <body>
-    <div class="theme-selector">
+    <div on:click={() => applyNextTheme()} class="theme-selector">
         <svg
             class="theme-selector-icon"
             width="100%"
@@ -68,16 +77,6 @@
                 />
             </g>
         </svg>
-        <div class="theme-selector-selectors">
-            <div class="theme-selector-selector">
-            </div>
-            <div class="theme-selector-selector">
-            </div>
-            <div class="theme-selector-selector">
-            </div>
-            <div class="theme-selector-selector">
-            </div>
-        </div>
     </div>
 </body>
 
@@ -88,32 +87,13 @@
         bottom: 0;
         left: 0;
         overflow: hidden;
-        height: max(3vw, 50px);
-        min-width: max(3vw, 50px);
+        height: max(2vw, 35px);
+        min-width: max(2vw, 35px);
         place-items: center;
         display: grid;
-        grid-template-columns: max(3vw, 50px) min-content;
-        padding: 0.2rem;
+        padding: 0.4rem;
         border-top-right-radius: 0.5rem;
 
-    }
-    .theme-selector-selectors{
-        transition: all 0.4s ease-in-out;
-        opacity: 0;
-        display: none;
-    }
-    .theme-selector:hover .theme-selector-selectors{
-        opacity: 1;
-        display: grid;
-        grid-auto-flow: column;
-    }
-    .theme-selector-selector{
-        background-color: #ff0000;
-        place-content: center;
-        border-radius: 0.4rem;
-        margin-right: 0.2rem;
-        width: min(2rem, 3vw);
-        height: min(2rem, 3vw);
     }
     .theme-selector-icon{
         max-width: 50px;
