@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import type { Theme, ThemeElem } from "./model";
-
+    let currentThemeIndex = 0;
     let darkTheme: Theme = {
         name: "Dark",
         elements: [
@@ -12,7 +12,17 @@
             { property: "color-500", value: "#210a0f" },
         ],
     };
-
+    let lightTheme: Theme = {
+        name: "Light",
+        elements: [
+            { property: "text-100", value: "#222" },
+            { property: "text-200", value: "#111" },
+            { property: "accent", value: "#be3455" },
+            { property: "color-100", value: "#efefef" },
+            { property: "color-500", value: "#fff" },
+        ],
+    };
+    let themes: Theme[] = [lightTheme, darkTheme];
     const setGlobalCSSVariable = (property: string, value: string) => {
         document.documentElement.style.setProperty(`--${property}`, value);
     };
@@ -21,9 +31,12 @@
             setGlobalCSSVariable(elem.property, elem.value);
         });
     };
+    const applyNextTheme = () => {
+
+    }
 
     onMount(() => {
-        applyTheme(darkTheme);
+        applyTheme(lightTheme);
     });
 </script>
 
@@ -58,6 +71,12 @@
         <div class="theme-selector-selectors">
             <div class="theme-selector-selector">
             </div>
+            <div class="theme-selector-selector">
+            </div>
+            <div class="theme-selector-selector">
+            </div>
+            <div class="theme-selector-selector">
+            </div>
         </div>
     </div>
 </body>
@@ -69,25 +88,32 @@
         bottom: 0;
         left: 0;
         overflow: hidden;
-        height: 4vw;
-        width: auto;
-        place-content: center;
+        height: max(3vw, 50px);
+        min-width: max(3vw, 50px);
+        place-items: center;
         display: grid;
-        grid-template-columns: 4vw min-content;
-        padding: 0.4rem;
+        grid-template-columns: max(3vw, 50px) min-content;
+        padding: 0.2rem;
         border-top-right-radius: 0.5rem;
 
     }
     .theme-selector-selectors{
-        display: grid;
+        transition: all 0.4s ease-in-out;
+        opacity: 0;
+        display: none;
     }
     .theme-selector:hover .theme-selector-selectors{
+        opacity: 1;
+        display: grid;
+        grid-auto-flow: column;
     }
     .theme-selector-selector{
         background-color: #ff0000;
-        margin-left: 1rem;
-        width: 2vw;
-        height: 2vw;
+        place-content: center;
+        border-radius: 0.4rem;
+        margin-right: 0.2rem;
+        width: min(2rem, 3vw);
+        height: min(2rem, 3vw);
     }
     .theme-selector-icon{
         max-width: 50px;
