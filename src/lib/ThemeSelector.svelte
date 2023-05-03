@@ -1,7 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import type { Theme, ThemeElem } from "./model";
-    let currentThemeIndex = 0;
     let darkTheme: Theme = {
         name: "Dark",
         elements: [
@@ -22,6 +21,7 @@
             { property: "color-500", value: "#fff" },
         ],
     };
+    let currentThemeIndex = 0;
     let themes: Theme[] = [lightTheme, darkTheme];
     const setGlobalCSSVariable = (property: string, value: string) => {
         document.documentElement.style.setProperty(`--${property}`, value);
