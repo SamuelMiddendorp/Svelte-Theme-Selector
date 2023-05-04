@@ -5,8 +5,11 @@
 </script>
 <body>
 <h1>
-    Hallo Velorexe
+    Svelte Theme Selector!
 </h1>
+<h2>
+    Try it now!
+</h2>
 <ThemeSelector/>
 </body>
 <style>
@@ -15,7 +18,8 @@
     }
     h1{ 
     color: var(--text-100);
-
-
+    }
+    h2{
+        color: var(--text-200);
     }
 </style>
