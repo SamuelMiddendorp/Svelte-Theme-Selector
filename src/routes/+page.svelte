@@ -17,7 +17,7 @@
         background-color: var(--color-100); 
     }
     h1{ 
-    color: var(--text-100);
+        color: var(--text-100);
     }
     h2{
         color: var(--text-200);

@@ -50,6 +50,7 @@
 </script>
 
 <body>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div on:click={() => applyNextTheme()} class="theme-selector">
         <svg
             class="theme-selector-icon"
