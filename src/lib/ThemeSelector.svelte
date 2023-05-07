@@ -9,19 +9,21 @@
             { property: "text-600", value: "#efefef" },
             { property: "text-900", value: "#efefef" },
             { property: "accent", value: "#be3455" },
-            { property: "color-100", value: "#120407" },
-            { property: "color-300", value: "#210a0f" },
-            { property: "color-600", value: "#210a0f" },
+            { property: "color-100", value: "#000" },
+            { property: "color-300", value: "#111" },
+            { property: "color-600", value: "#222" },
         ],
     };
     let lightTheme: Theme = {
         name: "Light",
         elements: [
             { property: "text-100", value: "#222" },
-            { property: "text-200", value: "#111" },
+            { property: "text-300", value: "#111" },
+            { property: "text-600", value: "#000" },
             { property: "accent", value: "#be3455" },
-            { property: "color-100", value: "#efefef" },
-            { property: "color-500", value: "#fff" },
+            { property: "color-100", value: "#e5e5e5" },
+            { property: "color-300", value: "#efefef" },
+            { property: "color-600", value: "#fff" },
         ],
     };
     let currentThemeIndex = 0;
@@ -87,7 +89,7 @@
 
 <style>
     .theme-selector{
-        background-color: var(--text-200);
+        background-color: var(--text-300);
         position: fixed;
         bottom: 0;
         left: 0;
@@ -104,13 +106,13 @@
         max-height: 50px;
     }
     .theme-selector-icon-line {
-        stroke: var(--color-500);
+        stroke: var(--color-300);
         fill: none;
     }
     .theme-selector-icon-fill {
-        fill: var(--color-500);
+        fill: var(--color-300);
     }
     .theme-selector-icon-droplet {
-        fill: var(--color-500);
+        fill: var(--color-300);
     }
 </style>
