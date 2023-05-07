@@ -5,10 +5,13 @@
         name: "Dark",
         elements: [
             { property: "text-100", value: "#F7FFF8" },
-            { property: "text-200", value: "#efefef" },
+            { property: "text-300", value: "#efefef" },
+            { property: "text-600", value: "#efefef" },
+            { property: "text-900", value: "#efefef" },
             { property: "accent", value: "#be3455" },
             { property: "color-100", value: "#120407" },
-            { property: "color-500", value: "#210a0f" },
+            { property: "color-300", value: "#210a0f" },
+            { property: "color-600", value: "#210a0f" },
         ],
     };
     let lightTheme: Theme = {
@@ -51,6 +54,7 @@
 
 <body>
     <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- Since this should not be crawled we do not put it in an anchor tag -->
     <div on:click={() => applyNextTheme()} class="theme-selector">
         <svg
             class="theme-selector-icon"
@@ -87,7 +91,6 @@
         position: fixed;
         bottom: 0;
         left: 0;
-        overflow: hidden;
         height: max(2vw, 35px);
         min-width: max(2vw, 35px);
         place-items: center;
