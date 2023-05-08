@@ -9,44 +9,54 @@
         <section>
             <h2>Lorem</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, placeat laborum fugiat voluptate repellat quaerat, assumenda deserunt soluta mollitia quidem necessitatibus officia facere, doloremque porro autem tempora? Molestiae, modi inventore!</p>
+            <button>Learn more</button>
         </section>
         <section>
             <h2>Lorem</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, placeat laborum fugiat voluptate repellat quaerat, assumenda deserunt soluta mollitia quidem necessitatibus officia facere, doloremque porro autem tempora? Molestiae, modi inventore!</p>
+            <button>Learn more</button>
         </section>
         <section>
             <h2>Lorem</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, placeat laborum fugiat voluptate repellat quaerat, assumenda deserunt soluta mollitia quidem necessitatibus officia facere, doloremque porro autem tempora? Molestiae, modi inventore!</p>
+            <button>Learn more</button>
         </section>
         <section>
             <h2>Lorem</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, placeat laborum fugiat voluptate repellat quaerat, assumenda deserunt soluta mollitia quidem necessitatibus officia facere, doloremque porro autem tempora? Molestiae, modi inventore!</p>
+            <button>Learn more</button>
         </section>
     </section>
     <section class="outer-panel">
         <section>
             <h2>Lorem</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, placeat laborum fugiat voluptate repellat quaerat, assumenda deserunt soluta mollitia quidem necessitatibus officia facere, doloremque porro autem tempora? Molestiae, modi inventore!</p>
+            <button>Learn more</button>
         </section>
         <section>
             <h2>Lorem</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, placeat laborum fugiat voluptate repellat quaerat, assumenda deserunt soluta mollitia quidem necessitatibus officia facere, doloremque porro autem tempora? Molestiae, modi inventore!</p>
+            <button>Learn more</button>
         </section>
         <section>
             <h2>Lorem</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, placeat laborum fugiat voluptate repellat quaerat, assumenda deserunt soluta mollitia quidem necessitatibus officia facere, doloremque porro autem tempora? Molestiae, modi inventore!</p>
+            <button>Learn more</button>
         </section>
         <section>
             <h2>Lorem</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, placeat laborum fugiat voluptate repellat quaerat, assumenda deserunt soluta mollitia quidem necessitatibus officia facere, doloremque porro autem tempora? Molestiae, modi inventore!</p>
+            <button>Learn more</button>
         </section>
         <section>
             <h2>Lorem</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, placeat laborum fugiat voluptate repellat quaerat, assumenda deserunt soluta mollitia quidem necessitatibus officia facere, doloremque porro autem tempora? Molestiae, modi inventore!</p>
+            <button>Learn more</button>
         </section>
         <section>
             <h2>Lorem</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, placeat laborum fugiat voluptate repellat quaerat, assumenda deserunt soluta mollitia quidem necessitatibus officia facere, doloremque porro autem tempora? Molestiae, modi inventore!</p>
+            <button>Learn more</button>
         </section>
     </section>
 </main>
@@ -63,6 +73,15 @@
     }
     main h2{
         color: var(--text-300);
+    }
+    main button{
+        background-color: var(--accent);
+        border: none;
+        padding: 0.4rem;
+        margin-top: 1rem;
+        color: var(--button);
+        text-transform: uppercase;
+        border-radius: 0.4rem;
     }
     
     .outer-panel{

@@ -4,11 +4,11 @@
     let darkTheme: Theme = {
         name: "Dark",
         elements: [
-            { property: "text-100", value: "#F7FFF8" },
+            { property: "text-100", value: "#e5e5e5" },
             { property: "text-300", value: "#efefef" },
-            { property: "text-600", value: "#efefef" },
-            { property: "text-900", value: "#efefef" },
+            { property: "text-600", value: "#fff" },
             { property: "accent", value: "#be3455" },
+            { property: "button", value: "#fff"},
             { property: "color-100", value: "#000" },
             { property: "color-300", value: "#111" },
             { property: "color-600", value: "#222" },
@@ -21,6 +21,7 @@
             { property: "text-300", value: "#111" },
             { property: "text-600", value: "#000" },
             { property: "accent", value: "#be3455" },
+            { property: "button", value: "#fff"},
             { property: "color-100", value: "#e5e5e5" },
             { property: "color-300", value: "#efefef" },
             { property: "color-600", value: "#fff" },
@@ -38,7 +39,7 @@
     };
     const applyNextTheme = () => {
         let maxIndex = themes.length - 1;
-        console.log(currentThemeIndex);
+
         if(currentThemeIndex < maxIndex){
             currentThemeIndex = currentThemeIndex + 1;
             applyTheme(themes[currentThemeIndex]);
@@ -58,6 +59,7 @@
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- Since this should not be crawled we do not put it in an anchor tag -->
     <div on:click={() => applyNextTheme()} class="theme-selector">
+        <!-- Use inline svg to have control over the different parts of the svg-->
         <svg
             class="theme-selector-icon"
             width="100%"
