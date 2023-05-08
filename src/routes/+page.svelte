@@ -5,7 +5,7 @@
 </script>
 <body>
 <main>
-    <section>
+    <section class="outer-panel">
         <section>
             <h2>Lorem</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, placeat laborum fugiat voluptate repellat quaerat, assumenda deserunt soluta mollitia quidem necessitatibus officia facere, doloremque porro autem tempora? Molestiae, modi inventore!</p>
@@ -23,7 +23,7 @@
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, placeat laborum fugiat voluptate repellat quaerat, assumenda deserunt soluta mollitia quidem necessitatibus officia facere, doloremque porro autem tempora? Molestiae, modi inventore!</p>
         </section>
     </section>
-    <section>
+    <section class="outer-panel">
         <section>
             <h2>Lorem</h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, placeat laborum fugiat voluptate repellat quaerat, assumenda deserunt soluta mollitia quidem necessitatibus officia facere, doloremque porro autem tempora? Molestiae, modi inventore!</p>
@@ -65,6 +65,10 @@
         color: var(--text-300);
     }
     
+    .outer-panel{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    }
     section{
         padding: 0.2rem;
         background-color: var(--color-300);
