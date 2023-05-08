@@ -1,6 +1,9 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import type { Theme, ThemeElem } from "./model";
+
+    let isOpen = true;
+    let documentReady = false;
     let darkTheme: Theme = {
         name: "Dark",
         elements: [
@@ -50,7 +53,26 @@
         }
     }
 
+    $:{
+        if(documentReady){
+        let themeSelectorToggle = document.getElementById("theme-selector-toggle")!; 
+        let themeSelector = document.getElementById("theme-selector")!; 
+        if(isOpen){
+            themeSelector.style.left = "calc(-1 * max(2vw, 35px) - 0.4rem)";
+            themeSelectorToggle.innerHTML = ">"
+        }
+        else{
+            themeSelector.style.left = "0px";
+            themeSelectorToggle.innerHTML = "<"
+        }
+    }
+    }
+    const toggleThemeSelector = () => {
+        isOpen = !isOpen;
+    }
+
     onMount(() => {
+        documentReady = true;
         applyTheme(themes[currentThemeIndex]);
     });
 </script>
@@ -58,9 +80,9 @@
 <body>
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- Since this should not be crawled we do not put it in an anchor tag -->
-    <div on:click={() => applyNextTheme()} class="theme-selector">
+    <div id="theme-selector">
         <!-- Use inline svg to have control over the different parts of the svg-->
-        <svg
+        <svg on:click={() => applyNextTheme()}
             class="theme-selector-icon"
             width="100%"
             height="100%"
@@ -86,11 +108,13 @@
                 />
             </g>
         </svg>
+        <p id="theme-selector-toggle" on:click={() => toggleThemeSelector()}>></p>
     </div>
 </body>
 
 <style>
-    .theme-selector{
+    #theme-selector{
+        transition: all 0.4s ease-in-out;
         background-color: var(--text-300);
         position: fixed;
         bottom: 0;
@@ -102,6 +126,21 @@
         padding: 0.4rem;
         border-top-right-radius: 0.5rem;
 
+    }
+    #theme-selector p{
+        font-weight: 600;
+        font-size: 1.2rem;
+        width: 1.2rem;
+        height: 1.2rem;
+        display: grid;
+        place-content: center;
+        font-family: sans-serif;
+        user-select: none;
+        position: absolute;
+        background: var(--text-100);
+        color: var(--color-100);
+        border-radius: 0.4rem;
+        left: calc(max(2vw, 35px) + 1rem);
     }
     .theme-selector-icon{
         max-width: 50px;
