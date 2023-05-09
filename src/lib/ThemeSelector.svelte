@@ -3,7 +3,9 @@
     import type { Theme, ThemeElem } from "./model";
 
     let isOpen = true;
+    
     let documentReady = false;
+
     let darkTheme: Theme = {
         name: "Dark",
         elements: [
@@ -55,6 +57,7 @@
 
     $:{
         if(documentReady){
+        // It is fine to break here
         let themeSelectorToggle = document.getElementById("theme-selector-toggle")!; 
         let themeSelector = document.getElementById("theme-selector")!; 
         if(isOpen){
@@ -120,7 +123,7 @@
         bottom: 0;
         left: 0;
         height: max(2vw, 35px);
-        min-width: max(2vw, 35px);
+        width: max(2vw, 35px);
         place-items: center;
         display: grid;
         padding: 0.4rem;
