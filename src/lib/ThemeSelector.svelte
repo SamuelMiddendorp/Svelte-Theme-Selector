@@ -3,9 +3,10 @@
     import type { Theme, ThemeElem } from "./model";
 
     let isOpen = true;
-    
-    let documentReady = false;
 
+    let documentReady = false;
+    export let themes: Theme[] = [];
+    export let useDefaults = true;
     let darkTheme: Theme = {
         name: "Dark",
         elements: [
@@ -13,7 +14,7 @@
             { property: "text-300", value: "#efefef" },
             { property: "text-600", value: "#fff" },
             { property: "accent", value: "#be3455" },
-            { property: "button", value: "#fff"},
+            { property: "button", value: "#fff" },
             { property: "color-100", value: "#000" },
             { property: "color-300", value: "#111" },
             { property: "color-600", value: "#222" },
@@ -26,14 +27,19 @@
             { property: "text-300", value: "#111" },
             { property: "text-600", value: "#000" },
             { property: "accent", value: "#be3455" },
-            { property: "button", value: "#fff"},
+            { property: "button", value: "#fff" },
             { property: "color-100", value: "#e5e5e5" },
             { property: "color-300", value: "#efefef" },
             { property: "color-600", value: "#fff" },
         ],
     };
+    
     let currentThemeIndex = 0;
-    let themes: Theme[] = [lightTheme, darkTheme];
+    if(useDefaults){
+
+        themes = themes.concat([lightTheme, darkTheme]);
+    }
+
     const setGlobalCSSVariable = (property: string, value: string) => {
         document.documentElement.style.setProperty(`--${property}`, value);
     };
@@ -45,34 +51,33 @@
     const applyNextTheme = () => {
         let maxIndex = themes.length - 1;
 
-        if(currentThemeIndex < maxIndex){
+        if (currentThemeIndex < maxIndex) {
             currentThemeIndex = currentThemeIndex + 1;
             applyTheme(themes[currentThemeIndex]);
-        }
-        else{
+        } else {
             currentThemeIndex = 0;
             applyTheme(themes[currentThemeIndex]);
         }
-    }
+    };
 
-    $:{
-        if(documentReady){
-        // It is fine to break here
-        let themeSelectorToggle = document.getElementById("theme-selector-toggle")!; 
-        let themeSelector = document.getElementById("theme-selector")!; 
-        if(isOpen){
-            themeSelector.style.left = "calc(-1 * max(2vw, 35px) - 0.4rem)";
-            themeSelectorToggle.innerHTML = ">"
+    $: {
+        if (documentReady) {
+            // It is fine to break here
+            let themeSelectorToggle = document.getElementById("theme-selector-toggle")!;
+            let themeSelector = document.getElementById("theme-selector")!;
+
+            if (isOpen) {
+                themeSelector.style.left = "calc(-1 * max(2vw, 35px) - 0.4rem)";
+                themeSelectorToggle.innerHTML = ">";
+            } else {
+                themeSelector.style.left = "0px";
+                themeSelectorToggle.innerHTML = "<";
+            }
         }
-        else{
-            themeSelector.style.left = "0px";
-            themeSelectorToggle.innerHTML = "<"
-        }
-    }
     }
     const toggleThemeSelector = () => {
         isOpen = !isOpen;
-    }
+    };
 
     onMount(() => {
         documentReady = true;
@@ -85,7 +90,8 @@
     <!-- Since this should not be crawled we do not put it in an anchor tag -->
     <div id="theme-selector">
         <!-- Use inline svg to have control over the different parts of the svg-->
-        <svg on:click={() => applyNextTheme()}
+        <svg
+            on:click={() => applyNextTheme()}
             class="theme-selector-icon"
             width="100%"
             height="100%"
@@ -111,13 +117,16 @@
                 />
             </g>
         </svg>
-        <p id="theme-selector-toggle" on:click={() => toggleThemeSelector()}>></p>
+        <p id="theme-selector-toggle" on:click={() => toggleThemeSelector()}>
+            >
+        </p>
     </div>
 </body>
 
 <style>
-    #theme-selector{
+    #theme-selector {
         transition: all 0.4s ease-in-out;
+        background-color: #111;
         background-color: var(--text-300);
         position: fixed;
         bottom: 0;
@@ -128,9 +137,8 @@
         display: grid;
         padding: 0.4rem;
         border-top-right-radius: 0.5rem;
-
     }
-    #theme-selector p{
+    #theme-selector p {
         font-weight: 600;
         font-size: 1.2rem;
         width: 1.2rem;
@@ -140,23 +148,28 @@
         font-family: sans-serif;
         user-select: none;
         position: absolute;
-        background: var(--text-100);
+        background-color: #111;
+        background-color: var(--text-300);
+        color: #e5e5e5;
         color: var(--color-100);
         border-radius: 0.4rem;
         left: calc(max(2vw, 35px) + 1rem);
     }
-    .theme-selector-icon{
+    .theme-selector-icon {
         max-width: 50px;
         max-height: 50px;
     }
     .theme-selector-icon-line {
+        stroke: #efefef;
         stroke: var(--color-300);
         fill: none;
     }
     .theme-selector-icon-fill {
+        fill: #efefef;
         fill: var(--color-300);
     }
     .theme-selector-icon-droplet {
+        fill: #efefef;
         fill: var(--color-300);
     }
 </style>

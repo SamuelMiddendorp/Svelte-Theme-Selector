@@ -60,7 +60,7 @@
         </section>
     </section>
 </main>
-<ThemeSelector/>
+<ThemeSelector useDefaults={true} themes={[{name: "Red", elements: [{property: "accent", value: "#FF0000"}]}]}/>
 </body>
 <style>
     *{
