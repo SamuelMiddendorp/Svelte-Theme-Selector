@@ -43,7 +43,14 @@
     const setGlobalCSSVariable = (property: string, value: string) => {
         document.documentElement.style.setProperty(`--${property}`, value);
     };
+    const resetTheme = () => {
+        lightTheme.elements.forEach((elem: ThemeElem) => {
+            setGlobalCSSVariable(elem.property, "initial");
+        })
+    
+    }
     const applyTheme = (theme: Theme) => {
+        resetTheme();
         theme.elements.forEach((elem: ThemeElem) => {
             setGlobalCSSVariable(elem.property, elem.value);
         });
