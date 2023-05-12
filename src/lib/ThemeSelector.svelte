@@ -95,8 +95,9 @@
 <body>
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- Since this should not be crawled we do not put it in an anchor tag -->
-    <div id="theme-selector">
+    <div id="theme-selector"> 
         <!-- Use inline svg to have control over the different parts of the svg-->
+        <button>
         <svg
             on:click={() => applyNextTheme()}
             class="theme-selector-icon"
@@ -124,6 +125,7 @@
                 />
             </g>
         </svg>
+    </button>
         <p id="theme-selector-toggle" on:click={() => toggleThemeSelector()}>
             >
         </p>
@@ -131,6 +133,10 @@
 </body>
 
 <style>
+    button{
+        background: none;
+        border: none;
+    }
     #theme-selector {
         transition: all 0.4s ease-in-out;
         background-color: #111;
