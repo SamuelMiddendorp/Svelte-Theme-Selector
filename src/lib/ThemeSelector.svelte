@@ -5,7 +5,9 @@
     let isOpen = true;
 
     let documentReady = false;
+    /**Additional themes to add*/
     export let themes: Theme[] = [];
+    /**Use default light and dark theme, on by default*/
     export let useDefaults = true;
     let darkTheme: Theme = {
         name: "Dark",
@@ -50,6 +52,7 @@
     
     }
     const applyTheme = (theme: Theme) => {
+        // We dont want "lingering" variables
         resetTheme();
         theme.elements.forEach((elem: ThemeElem) => {
             setGlobalCSSVariable(elem.property, elem.value);
@@ -94,7 +97,6 @@
 
 <body>
     <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <!-- Since this should not be crawled we do not put it in an anchor tag -->
     <div id="theme-selector"> 
         <!-- Use inline svg to have control over the different parts of the svg-->
         <button>
