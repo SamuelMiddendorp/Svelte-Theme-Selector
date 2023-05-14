@@ -3,12 +3,15 @@
     import type { Theme, ThemeElem } from "./model";
 
     let isOpen = true;
-
     let documentReady = false;
+    let currentThemeIndex = 0;
+
     /**Additional themes to add*/
     export let themes: Theme[] = [];
+
     /**Use default light and dark theme, on by default*/
     export let useDefaults = true;
+    
     let darkTheme: Theme = {
         name: "Dark",
         elements: [
@@ -22,6 +25,7 @@
             { property: "color-600", value: "#222" },
         ],
     };
+
     let lightTheme: Theme = {
         name: "Light",
         elements: [
@@ -36,21 +40,23 @@
         ],
     };
     
-    let currentThemeIndex = 0;
     if(useDefaults){
-
+        // User defined theme takes priority
         themes = themes.concat([lightTheme, darkTheme]);
     }
 
     const setGlobalCSSVariable = (property: string, value: string) => {
         document.documentElement.style.setProperty(`--${property}`, value);
     };
+
     const resetTheme = () => {
+        // Probably want to keep a set of variables used in the css context to not reset this way
         lightTheme.elements.forEach((elem: ThemeElem) => {
             setGlobalCSSVariable(elem.property, "initial");
         })
     
     }
+
     const applyTheme = (theme: Theme) => {
         // We dont want "lingering" variables
         resetTheme();
@@ -58,8 +64,8 @@
             setGlobalCSSVariable(elem.property, elem.value);
         });
     };
+
     const applyNextTheme = () => {
-        let maxIndex = themes.length - 1;
 
         if (currentThemeIndex < maxIndex) {
             currentThemeIndex = currentThemeIndex + 1;
@@ -69,7 +75,7 @@
             applyTheme(themes[currentThemeIndex]);
         }
     };
-
+    $: maxIndex = themes.length - 1;
     $: {
         if (documentReady) {
             // It is fine to break here
@@ -85,6 +91,7 @@
             }
         }
     }
+
     const toggleThemeSelector = () => {
         isOpen = !isOpen;
     };
@@ -93,6 +100,7 @@
         documentReady = true;
         applyTheme(themes[currentThemeIndex]);
     });
+
 </script>
 
 <body>
